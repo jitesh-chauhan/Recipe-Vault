@@ -22,7 +22,7 @@ from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     
-    path(".vercel.app",recipes, name="recipes"),
+    path("",recipes, name="recipes"),
     
     path('admin/', admin.site.urls),
     path("login_page/",login_page, name="login_page"),
