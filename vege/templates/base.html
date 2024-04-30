@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+      
+    </style>
+    <script>
+      function disableButton(btn) {
+          btn.innerHTML = 'Submitting...';
+          btn.disabled = true;
+      }
+      </script>
+</head>
+<body class="bg-">
+  <nav class="bg-blue-500">
+    <div class="container mx-auto flex items-center justify-between py-4">
+        {% if request.user.is_authenticated %}
+        <a class="border p-2 rounded text-white border-blue-800-600 bg-violet-600-500" href="/recipes/">{{ request.user.first_name }}</a>
+        {% endif %}
+       
+        <div class=" " id="mobile-menu">
+            <h1 class="text-white text-4xl   font-bold">Food Recipes</h1>
+          </div>
+            <div>
+          {% if request.user.is_authenticated %}
+            <a href='/logout_page/' class="inline-block bg-green-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 mx-3">Logout</a>
+            {% elif is_login_page %}
+            <a href='/register/' class="inline-block bg-green-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 mx-3">Register</a>
+            {% else %}
+            <a href='/login_page/' class="inline-block bg-green-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 mx-3">Login</a>
+            {% endif %}
+          </div>
+        
+     </div>
+  </nav>
+   
+      {% block start %}
+    {% endblock %}
+  
+    <!-- Link to Tailwind CSS JavaScript (optional) -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.js"></script> -->
+</body>
+</html>

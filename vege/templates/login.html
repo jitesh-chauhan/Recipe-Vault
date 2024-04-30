@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block start %}
+  
+    <form method="post" class="container mx-auto w-96 mt-28 shadow p-5  bg-teal-800 rounded border border-indigo-700" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if messages %}
+            <div class="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded relative" role="alert">
+                {% for message in messages %}
+                    <span class="block sm:inline">{{ message }}</span>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <h2 class="text-3xl font-bold mb-3">Login</h2>
+        <div class="mb-3 mt-6">
+            <label for="username" class="block  font-medium text-lg">Username</label>
+            <input type="text" name="username" autocomplete="username" id="username" class="mt-3 h-6 border-2 border-indigo-300 focus:outline-none focus:ring focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md">
+        </div>
+        <div class="mb-6">
+            <label for="exampleInputPassword1" class="block  font-medium text-lg">Password</label>
+            <input type="password" name="password" id="exampleInputPassword1" class="mt-3 h-6 border-2 border-indigo-300 focus:outline-none focus:ring focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+        </div>
+        <button type="submit" class="bg-blue-500 mt-3 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Submit</button>
+        <p class='mt-3'>Don't have an account? <a href="/register/" class="text-green-500 hover:text-green-700">Register</a></p>
+    </form>
+
+{% endblock %}
