@@ -25,15 +25,21 @@ BASE_DIR = Path(__file__).resolve().parent
 SECRET_KEY = 'django-insecure-!r=hw#2(t!wuhrz=79o(5e5$iutu^glvswt3(-@z9#c!e7adu2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['.vercel.app']
 
 
 SECURE_SSL_REDIRECT = True
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+
+# HSTS settings
+# SECURE_HSTS_SECONDS=31536000
+# SECURE_HSTS_PRELOAD=True
+# SECURE_HSTS_INCLUDE_SUBDOMAINS=True
+
 
 SSL_CERTIFICATE = 'C:/Users/VaRdaiN/Desktop/Django/key'
 SSL_KEY = 'C:/Users/VaRdaiN/Desktop/Django/key'
@@ -48,7 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'compressor',
+   
     
    
 ]
@@ -93,13 +99,37 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg4',
+#         'NAME': 'Recipe Vault', 
+#         'USER': 'postgres',
+#         'PASSWORD': 'VardaiN1',
+#         'HOST': '.vercel.app', 
+#         'PORT': '8888',
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR,'core'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'django_postgres',
+        'PASSWORD': 'VardaiN',
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
 }
-
+# .
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': os.environ.get("postgres"),
+#         'USER': os.environ.get("django_postgres"),
+#         'PASSWORD': os.environ.get("VardaiN"),
+#         'HOST': os.environ.get("localhost"),
+#         'PORT': os.environ.get("5432"),
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -151,9 +181,7 @@ STATICFILES_DIRS=(
         os.path.join(BASE_DIR,'static'),
 )
 
-COMPRESS_ROOT = BASE_DIR / 'static'
- 
-COMPRESS_ENABLED = True
+
  
 STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
 
