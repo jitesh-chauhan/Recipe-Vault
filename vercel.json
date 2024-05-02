@@ -1,22 +1,13 @@
 {
     "builds": [{
-        "src": "Recipe-Vault/wsgi.py",
+        "src": "core/wsgi.py",
         "use": "@vercel/python",
-        "config": { "maxLambdaSize": "15mb", "runtime": "python3.12" }
-    },
-    {
-        "src": "build_files.sh",
-        "use": "@vercel/static-build",
-        "config": { "distDir": "staticfiles_build" }
+        "config": { "maxLambdaSize": "15mb", "runtime":"python3.12" }
     }],
     "routes": [
         {
-            "src": "/static/(.*)",
-            "dest": "/static/$1"
-        },
-        {
             "src": "/(.*)",
-            "dest": "Recipe-Vault/wsgi.py"
+            "dest": "core/wsgi.py"
         }
     ]
 }
