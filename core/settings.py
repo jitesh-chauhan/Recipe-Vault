@@ -188,13 +188,12 @@ STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static_root')
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static','staticfiles_build'),
+    os.path.join(BASE_DIR, 'static', 'staticfiles_build'),
 ]
 
+# MEDIA_ROOT = '/media/'
 
-MEDIA_ROOT = '/media/'
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATICFILES_DIRS=(
         os.path.join(BASE_DIR,'static','staticfiles_build'),
@@ -220,4 +219,3 @@ CLOUDINARY_STORAGE = {
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 MEDIA_URLS ='/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-STATIC_ROOT = 'staticfiles_build'
