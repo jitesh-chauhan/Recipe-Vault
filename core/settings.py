@@ -9,8 +9,9 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-from pathlib import Path
 import os
+from pathlib import Path
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,15 +26,15 @@ BASE_DIR = Path(__file__).resolve().parent
 SECRET_KEY = 'django-insecure-!r=hw#2(t!wuhrz=79o(5e5$iutu^glvswt3(-@z9#c!e7adu2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ['*']
 
 
-SECURE_SSL_REDIRECT = True
-# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+# SECURE_SSL_REDIRECT = True
+# # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
 
 # HSTS settings
 # SECURE_HSTS_SECONDS=31536000
@@ -41,8 +42,8 @@ CSRF_COOKIE_SECURE = True
 # SECURE_HSTS_INCLUDE_SUBDOMAINS=True
 
 
-SSL_CERTIFICATE = 'C:/Users/VaRdaiN/Desktop/Django/key'
-SSL_KEY = 'C:/Users/VaRdaiN/Desktop/Django/key'
+# SSL_CERTIFICATE = 'C:/Users/VaRdaiN/Desktop/Django/key'
+# SSL_KEY = 'C:/Users/VaRdaiN/Desktop/Django/key'
 
 
 # Application definition
@@ -109,17 +110,34 @@ WSGI_APPLICATION = 'core.wsgi.application'
 #         'PORT': '8888',
 #     }
 # }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'postgres',
+#         'USER': 'django_postgres',
+#         'PASSWORD': 'VardaiN',
+#         'HOST': 'localhost',
+#         'PORT': '5432'
+#     }
+# }
+# mongodb+srv://jitesh_chauhan:<password>@cluster0.zmfm3x2.mongodb.net/
+# mongodb+srv://jitesh_chauhan:VardaiN@cluster0.zmfm3x2.mongodb.net/
+# mongodb+srv://jitesh_chauhan:<password>@cluster0.zmfm3x2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'django_postgres',
-        'PASSWORD': 'VardaiN',
-        'HOST': 'localhost',
-        'PORT': '5432'
+        'ENGINE': 'djongo',
+        "CLIENT": {
+           "name": "VardaiN_db",
+           "host":  "mongodb+srv://jitesh_chauhan:VardaiN@cluster0.zmfm3x2.mongodb.net/",
+           "username": "jitesh_chauhan",
+           "password": "VardaiN",
+           "authMechanism": "SCRAM-SHA-1",
+        }, 
     }
 }
-# .
+
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -167,23 +185,24 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static_root')
+# STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static_root')
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),
+# ]
+
 
 # MEDIA_ROOT = '/media/'
 
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STATICFILES_DIRS=(
-        os.path.join(BASE_DIR,'static'),
-)
+# STATICFILES_DIRS=(
+#         os.path.join(BASE_DIR,'static'),
+# )
 
 
  
-STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
+# STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -197,3 +216,7 @@ CLOUDINARY_STORAGE = {
     'API_KEY': '234342994428838',
     'API_SECRET': 'dkEe10im2aa1oZSQeSVXwlTlFic'
 }
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+MEDIA_URLS ='/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

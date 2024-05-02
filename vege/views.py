@@ -71,9 +71,9 @@ def login_page(request):
         username=data.get('username')
         password=data.get('password')
         
-        if not User.objects.filter(username = username).exists():
-            messages.error(request, "Invalid username!")
-            return redirect("/login_page/")
+        # if User.objects.filter(username = username).exists():
+        #     messages.error(request, "Invalid username!")
+        #     return redirect("/login_page/")
     
     
         user=authenticate(username=username, password=password)
